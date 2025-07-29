@@ -1,65 +1,48 @@
-<!--MAIN PAGE-->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <!--standard charset-->
-    <meta charset="UTF-8" />
-
-    <!--scale viewport w screen size (not perfect)-->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Christopher Moon Portfolio Website</title>
-
-    <!--css-->
-    <link href="./css/output.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
-
-    <!-- Add other CSS files if needed below-->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRT Styled Website</title>
+    <!-- Import custom font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Link to your compiled output.css -->
+    <link rel="stylesheet" href="./css/output.css">
+    <!-- Link to your custom style.css for non-Tailwind specific styles and @theme definitions -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4 font-crt">
+    <!-- SVG definitions for filters and the squircle mask -->
+    
 
-<body>
-
-  <!-- Navigation Bar -->
-  <nav>
-
-    <!--unordered list: NAVBAR-->
-    <ul class = "navbar">
-
-      <li><a href="index.html">Home</a></li>
-
-      <li><a href="about.html">About</a></li>
-
-      <li><a href="projects.html">Projects</a></li>
-
-      <li><a href="contact.html">Contact</a></li>
-
-    </ul>
-
-  </nav>
-
-  <!-- Main content -->
-  <main>
-
-    <h1 class="text-3xl font-bold underline"> Welcome to My Portfolio Hyrax</h1>
-    <p>This is a basic starting point for your portfolio website.  Hyrax Goph Meow</p>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Guinea Goph</p>
-  </footer>
- 
-  <script src = "js/main.js"></script>
-  <!-- Add other JS files if needed -->
-
+    <div class="crt-screen w-full max-w-4xl h-[calc(100vh-2rem)] md:h-[600px] flex flex-col items-center justify-center p-8 relative">
+        <div class="relative z-20 text-center crt-text">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-pulse">
+                <span class="block animate-[var(--animation-flicker)]">WELCOME</span>
+                <span class="block animate-[var(--animation-flicker)] animate-[flicker_0.25s_infinite_alternate_reverse]">TO MY</span>
+                <span class="block animate-[var(--animation-flicker)] animate-[flicker_0.22s_infinite_alternate]">PERSONAL WEBSITE</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-4 animate-[var(--animation-flicker)] animate-[flicker_0.3s_infinite_alternate]">
+                >> Loading data...
+            </p>
+            <p class="text-sm md:text-base animate-[var(--animation-flicker)] animate-[flicker_0.35s_infinite_alternate]">
+                C:\USERS\GUEST>_
+            </p>
+            <div class="mt-8 text-left text-xs md:text-sm">
+                <p class="mb-2">
+                    <span class="text-yellow-400">[STATUS]:</span> Initializing retro protocols... <span class="text-green-500">COMPLETE</span>
+                </p>
+                <p class="mb-2">
+                    <span class="text-yellow-400">[LOG]:</span> Establishing secure connection... <span class="text-green-500">OK</span>
+                </p>
+                <p class="mb-2">
+                    <span class="text-yellow-400">[WARNING]:</span> High voltage detected. Proceed with caution.
+                </p>
+                <p class="mb-2">
+                    <span class="text-yellow-400">[INFO]:</span> Press any key to continue...
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
-
-
 </html>
