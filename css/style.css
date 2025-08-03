@@ -17,13 +17,35 @@
 /* Define keyframes for animations */
 @keyframes flicker {
   0%, 100% { opacity: 0.99; }
-  5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { opacity: 0.85; }
+  5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { opacity: 0.99; }
 }
 
 @keyframes scanline-move {
   0% { background-position: 0 0; }
   100% { background-position: 0 100%; }
 }
+
+@keyframes crt-vignette-fade {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes crt-scan-jitter {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 
 @font-face {
   font-family: 'Porcine';
@@ -33,49 +55,123 @@
 }
 
 /* Custom CSS for CRT effects (non-Tailwind utility classes) */
+body {
+  margin: 0;
+  background-color: #fff; /* White background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* title font (large blocky)*/
 .large {
 
   font-family: 'Porcine', monospace;
   font-size: xxx-large;
   letter-spacing: 0.5rem; 
   text-align: center;
+
 }
 
-/* CRT overlay */
+
+/* CRT overlay (flicker, scanline/rgb, screen warp)*/
+
+.crt-overlay::after {
+
+  pointer-events: none; /* Allow clicks to pass through */
+
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 11;
+
+  background: radial-gradient(
+    ellipse 80% 80% at center,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  animation: crt-vignette-fade 6s ease-in-out infinite alternate;
+
+}
+
+
 .crt-screen {
 
-    background-color: #000; /* Black background for the screen */
-    position: relative;
-
-    /* Warp effect */
-    filter: contrast(1.2) brightness(1.1);
-    mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
+  position: relative;
+  width: 80vw;
+  max-width: 800px;
+  height: 60vh;
+  background-color: #000;
+  overflow: hidden;
 
 }
 
-.crt-screen::after {
+
+/* Inner shaking layer */
+.crt-inner {
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: crt-scan-jitter 0.12s infinite alternate;
+  will-change: transform;
+}
+
+/* Your content (text, images, etc) */
+.crt-content {
+  padding: 1rem; /* or adjust as needed */
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  color: #00ff00; /* Classic green CRT text */
+  text-shadow: 0 0 3px #00ff00, 0 0 10px #00ff00, 0 0 15px rgba(0, 255, 0, 0.5); /* Green glow effect */
+  line-height: 1.2; /* Adjust line height for retro feel */
+
+}
+
+.crt-overlay {
+
+    pointer-events: none; /* Allow clicks to pass through */
+
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
     background:
         linear-gradient(rgba(64, 58, 58, 0.1) 50%, rgba(0, 0, 0, 0.25) 50%), /* Scanlines */
         linear-gradient(90deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 0, 0.15), rgba(0, 0, 255, 0.1)); /* RGB subpixels */
+    
     background-size: 100% 3px, 3px 100%; /* Size of scanlines and subpixels */
-    z-index: 10;
-    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 15;
     /* Animations for pseudo-elements directly reference keyframes */
     animation: var(--animation-scanline-move), var(--animation-flicker); /* Use CSS variables for animations */
+
 }
 
 
-/* Global text styling for CRT look */
+/* CRT text (green glow) */
 .crt-text {
+
+
     color: #00ff00; /* Classic green CRT text */
     text-shadow: 0 0 3px #00ff00, 0 0 10px #00ff00, 0 0 15px rgba(0, 255, 0, 0.5); /* Green glow effect */
     line-height: 1.2; /* Adjust line height for retro feel */
+
+    transform: perspective(800px) rotateX(7deg);
+    transform-style: preserve-3d;
+    display: inline-block; /* Needed for transform to work properly */
+
+
 }
+
