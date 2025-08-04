@@ -1,11 +1,8 @@
 @import "tailwindcss";
 
-/*
-  Tailwind CSS v4: CSS-First Configuration
-  Customizations are now defined directly in your CSS file using @theme.
-  This replaces the need for extend in tailwind.config.js for these properties.
-*/
+/*tailwind theme*/
 @theme {
+
   /* Define custom font family */
   --font-crt: "Press Start 2P", monospace;
 
@@ -14,17 +11,19 @@
   --animation-scanline-move: scanline-move 8s linear infinite;
 }
 
-/* Define keyframes for animations */
+/* screen flicker animation frames */
 @keyframes flicker {
   0%, 100% { opacity: 0.99; }
   5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { opacity: 0.99; }
 }
 
+/* scanline animation frames*/
 @keyframes scanline-move {
   0% { background-position: 0 0; }
   100% { background-position: 0 100%; }
 }
 
+/* corner pulsing light animation frames */
 @keyframes crt-vignette-fade {
   0% {
     opacity: 0.6;
@@ -34,6 +33,7 @@
   }
 }
 
+/* screenshake frames */
 @keyframes crt-scan-jitter {
   0% {
     transform: translateX(0);
@@ -46,7 +46,7 @@
   }
 }
 
-
+/* porcine heavy font */
 @font-face {
   font-family: 'Porcine';
   src: url('/fonts/Porcine-Heavy.ttf') format('truetype');
@@ -54,10 +54,12 @@
   
 }
 
-/* Custom CSS for CRT effects (non-Tailwind utility classes) */
+/* Custom CSS (non-tailwind) */
+
+/* overall body */
 body {
   margin: 0;
-  background-color: #fff; /* White background */
+  background-color: #FF6A00; /* White background */
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -76,7 +78,6 @@ body {
 
 
 /* CRT overlay (flicker, scanline/rgb, screen warp)*/
-
 .crt-overlay::after {
 
   pointer-events: none; /* Allow clicks to pass through */
@@ -110,6 +111,7 @@ body {
   height: 60vh;
   background-color: #000;
   overflow: hidden;
+  border-radius: 15px;
 
 }
 
