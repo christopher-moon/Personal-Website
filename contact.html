@@ -1,50 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+<!--head, contains metadata-->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Squircle ClipPath Test</title>
-  <style>
-    /* Make body fill screen and center content */
-    body, html {
-      margin: 0; padding: 0; height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #222;
-    }
-    /* The element we clip */
-    .crt-screen {
-      width: 300px;
-      height: 200px;
-      background-color: #00ff00;
-      outline: 3px solid yellow; /* Visible outline to check shape */
-      
-      clip-path: url(#squircleClip);
-      -webkit-clip-path: url(#squircleClip);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRT Styled Website</title>
+    <!--custom fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <!-- Link to your compiled output.css -->
+    <link rel="stylesheet" href="./css/output.css">
+    <!-- Link to your custom style.css for non-Tailwind specific styles and @theme definitions -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
 
-  <!-- The clipped div -->
-  <div class="crt-screen"></div>
 
-  <!-- Hidden SVG clipPath -->
-  <svg width="0" height="0" style="position:absolute; visibility:hidden;" aria-hidden="true" focusable="false">
-    <defs>
-      <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
-        <path d="
-          M0.5,0
-          C0.8,0 1,0.2 1,0.5
-          C1,0.8 0.8,1 0.5,1
-          C0.2,1 0,0.8 0,0.5
-          C0,0.2 0.2,0 0.5,0
-          Z
-        " />
-      </clipPath>
-    </defs>
-  </svg>
 
-</body>
+<!--body-->
+<body class = "">
+
+    <div class="crt-screen">
+  
+      <div class="crt-inner">
+  
+        <div class = "crt-overlay"></div>
+  
+        <div class="crt-content crt-text">
+          
+              <!-- Navigation Bar -->
+            <nav>
+  
+              <!--unordered list: NAVBAR-->
+              <ul class = "navbar">
+  
+                <li><a href="index.html">Home</a></li>
+  
+                <li><a href="about.html">About</a></li>
+  
+                <li><a href="projects.html">Projects</a></li>
+  
+                <li><a href="contact.html">Contact •</a></li>
+  
+              </ul>
+  
+            </nav>
+  
+                  <!-- Main content -->
+            <main style="text-align: center; margin-top: 20px;">
+
+                chrismoonisme@gmail.com<p>
+
+                (408) 677 6593<p>
+
+            </main>
+  
+            <!-- Footer -->
+            <footer>
+  
+              <p>© 2025 Christopher Moon</p>
+  
+            </footer>
+  
+        </div>
+  
+      </div>
+  
+  </div>
+  
+    <script src = "js/main.js"></script>
+    <!-- Add other JS files if needed -->
+  
+  
+  </body>
+  
+
 </html>
